@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Current Read — Dark Fantasy Shelf</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- SVG icons -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-edit" viewBox="0 0 24 24">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z" />
+    </symbol>
+    <symbol id="icon-finish" viewBox="0 0 24 24">
+      <path d="M12 2L1 21h22L12 2zm0 3.84L18.93 19H5.07L12 5.84zM11 10h2v6h-2zM11 17h2v2h-2z" />
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+    </symbol>
+  </svg>
+  <header class="site-header">
+    <div class="site-title">Otherworld Reads</div>
+    <div class="site-sub">fantasy · learning · private shelf</div>
+  </header>
+
+  <main class="container">
+    <section class="panel current-panel">
+      <h2>Current Read</h2>
+      <div class="box">
+
+      <div id="current-card" class="card empty">
+        <form id="current-form">
+          <div class="field">
+            <label for="current-title">Title</label>
+            <input id="current-title" name="title" placeholder="What's on your nightstand?">
+          </div>
+          <div class="field two">
+            <div>
+              <label for="current-author">Author</label>
+              <input id="current-author" name="author" placeholder="Author">
+            </div>
+            <div>
+              <label for="current-cover">Cover URL</label>
+              <input id="current-cover" name="cover" placeholder="Optional image URL">
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="save-current" type="submit" class="btn primary">Set as current</button>
+            <button id="finish-current" type="button" class="btn">Finish & rate</button>
+          </div>
+        </form>
+
+        <div id="current-display" class="card-display hidden">
+          <img id="current-image" src="" alt="cover" onerror="this.style.display='none'">
+          <div class="meta">
+            <h3 id="display-title"></h3>
+            <div id="display-author" class="muted"></div>
+            <div class="card-actions">
+              <button id="edit-current" class="btn"><svg><use href="#icon-edit"></use></svg>Edit</button>
+              <button id="finish-current-display" class="btn"><svg><use href="#icon-finish"></use></svg>Finish & rate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <div id="finish-form" class="modal hidden" hidden>
+        <form id="finish-form-inner" class="finish-inner">
+          <h3>Finish</h3>
+          <div class="field">
+            <label for="rating">Rating (1-5)</label>
+            <input id="rating" type="number" min="1" max="5" value="5">
+          </div>
+          <div class="field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="4" placeholder="Thoughts, favorite quotes, impressions..."></textarea>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn primary">Save</button>
+            <button id="cancel-finish" type="button" class="btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      </div>
+    </section>
+
+    <section class="panel wishlist-panel">
+      <h2>The TBR Pile</h2>
+      <form id="wishlist-form" class="small-form">
+        <input id="wish-title" placeholder="Title" required>
+        <input id="wish-author" placeholder="Author">
+  <button class="btn"><svg><use href="#icon-finish"></use></svg>Add</button>
+      </form>
+      <ul id="wishlist" class="list"></ul>
+    </section>
+
+    <section class="panel finished-panel">
+      <h2>Finished Books</h2>
+      <ul id="finished-list" class="list"></ul>
+    </section>
+    
+    <section class="panel library-panel">
+      <h2>My Local Library</h2>
+      <div class="box">
+      <form id="library-form" class="small-form">
+        <input id="lib-name" placeholder="Library name" required>
+        <input id="lib-url" placeholder="URL (https://...)">
+        <button class="btn"><svg><use href="#icon-finish"></use></svg>Add</button>
+      </form>
+      <ul id="library" class="list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Made for quiet hours and strange moons</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
